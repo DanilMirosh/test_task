@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-INDEX_HTML = 'task/index.html'
+INDEX_HTML = 'menu/index.html'
 
 
 def index(request):
