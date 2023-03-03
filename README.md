@@ -26,21 +26,21 @@ Django
 В дальнейшем используйте инструмент Poetry для установки зависимостей Python.
 Примените миграции
 
-python manage.py makemigrations
+```python manage.py makemigrations```
 
-python manage.py migrate
+`python manage.py migrate`
 
 Создайте суперпользователя:
 
-python manage.py createsuperuser
+`python manage.py createsuperuser`
 
 Запуск проекта с тестовыми данными
 
 Выполните команды:
 
-python manage.py loaddata test_db.json
+`python manage.py loaddata test_db.json`
 
-python manage.py runserver
+`python manage.py runserver`
 
 Перейдите на страницу http://127.0.0.1:8000/ , чтобы увидеть меню
 Запуск проекта
@@ -48,7 +48,7 @@ python manage.py runserver
 Измените файл base.html вместо 'Производители банкоматов' напишите название основного меню, которое вам надо
 Выполните команду:
 
-python manage.py runserver
+`python manage.py runserver`
 
 В браузере перейдите на сраницу администратора http://127.0.0.1:8000/admin/
 
