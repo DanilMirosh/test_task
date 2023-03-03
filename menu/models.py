@@ -9,7 +9,7 @@ class Menu(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return f'Меню {self.name}'
+        return f'Меню "{self.name}"'
 
 
 class MenuItem(models.Model):
