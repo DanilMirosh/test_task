@@ -1,15 +1,12 @@
 from django.contrib import admin
 
-from .models import Menu, MenuItem
+from .models import Menu
 
 
 @admin.register(Menu)
 class MenuAdmin(admin.ModelAdmin):
-    list_display = ('name',)
 
-
-@admin.register(MenuItem)
-class MenuItemAdmin(admin.ModelAdmin):
-    list_display = ('name', 'parent')
-    list_filter = ('menu',)
-    search_fields = ('name', 'menu')
+    list_display = ('name', 'parent', 'url')
+    list_filter = ('name', 'parent')
+    search_fields = ('name',)
+    prepopulated_fields = {'url': ('name',)}

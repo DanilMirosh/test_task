@@ -1,9 +1,11 @@
 from django.urls import path
 
-from . import views
+from .views import MenuView
 
 app_name = 'menu'
 
+
 urlpatterns = [
-    path('', views.index, name='index')
+    path('', MenuView.as_view(), name='index'),
+    path('<str:url>/', MenuView.as_view(), name='child'),
 ]

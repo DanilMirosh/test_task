@@ -2,31 +2,33 @@ from django.db import models
 
 
 class Menu(models.Model):
-    name = models.CharField(max_length=50, unique=True, verbose_name='Название меню')
 
-    class Meta:
-        verbose_name = 'Меню'
-        verbose_name_plural = verbose_name
-
-    def __str__(self):
-        return f'Меню "{self.name}"'
-
-
-class MenuItem(models.Model):
-    name = models.CharField(max_length=50, unique=True, verbose_name='Название элемента меню')
+    name = models.CharField(
+        max_length=100,
+        verbose_name='Название',
+    )
     parent = models.ForeignKey(
         'self',
-        blank=True,
-        null=True,
         on_delete=models.CASCADE,
-        related_name='child_items',
-        verbose_name='Родитель'
+        null=True,
+        blank=True,
+        related_name='children',
+        verbose_name='Родительская категория',
     )
-    menu = models.ForeignKey(Menu, blank=True, on_delete=models.CASCADE, related_name='items', verbose_name='Меню')
+    url = models.CharField(
+        max_length=255,
+        unique=True,
+        verbose_name='Ссылка',
+    )
+
+    def get_parents(self):
+        if self.parent:
+            return self.parent.get_parents() + (self.parent.id,)
+        return None,
 
     class Meta:
-        verbose_name = 'Элемент меню'
-        verbose_name_plural = 'Элементы меню'
+        verbose_name = 'Пункт меню'
+        verbose_name_plural = 'Пункты меню'
 
     def __str__(self):
-        return f'Элемент: "{self.name}"'
+        return self.name

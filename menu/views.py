@@ -1,7 +1,5 @@
-from django.shortcuts import render
-
-INDEX_HTML = 'menu/index.html'
+from django.views.generic.base import TemplateView
 
 
-def index(request):
-    return render(request, INDEX_HTML)
+class MenuView(TemplateView):
+    template_name = 'base.html'
